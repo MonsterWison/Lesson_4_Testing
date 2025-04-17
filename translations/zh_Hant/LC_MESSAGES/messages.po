@@ -1,0 +1,198 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Sales & Purchasing System\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_Hant\n"
+
+msgid "Sales & Purchasing System"
+msgstr "銷售與採購系統"
+
+msgid "Login"
+msgstr "登入"
+
+msgid "Username"
+msgstr "用戶名"
+
+msgid "Password"
+msgstr "密碼"
+
+msgid "Menu"
+msgstr "選單"
+
+msgid "Logout"
+msgstr "登出"
+
+msgid "Basic Information"
+msgstr "基本資料"
+
+msgid "Sales System"
+msgstr "銷售系統"
+
+msgid "Purchases System"
+msgstr "採購系統"
+
+msgid "Inventory System"
+msgstr "庫存系統"
+
+msgid "Account Receivable"
+msgstr "應收帳款"
+
+msgid "Account Payable"
+msgstr "應付帳款"
+
+msgid "General Ledger"
+msgstr "總帳"
+
+msgid "Administrative"
+msgstr "行政管理"
+
+msgid "Reports"
+msgstr "報表"
+
+msgid "Customer List"
+msgstr "客戶列表"
+
+msgid "New Customer"
+msgstr "新增客戶"
+
+msgid "Search customers..."
+msgstr "搜尋客戶..."
+
+msgid "Customer ID"
+msgstr "客戶編號"
+
+msgid "Short Name"
+msgstr "簡稱"
+
+msgid "Contact Person"
+msgstr "聯絡人"
+
+msgid "Telephone"
+msgstr "電話"
+
+msgid "Email"
+msgstr "電子郵件"
+
+msgid "Actions"
+msgstr "操作"
+
+msgid "Confirm Delete"
+msgstr "確認刪除"
+
+msgid "Are you sure you want to delete customer"
+msgstr "您確定要刪除客戶"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Delete"
+msgstr "刪除"
+
+msgid "Create New Customer"
+msgstr "建立新客戶"
+
+msgid "Back to List"
+msgstr "返回列表"
+
+msgid "Long Name"
+msgstr "全名"
+
+msgid "Contact Title"
+msgstr "職稱"
+
+msgid "Department"
+msgstr "部門"
+
+msgid "Fax"
+msgstr "傳真"
+
+msgid "Website"
+msgstr "網站"
+
+msgid "Payment Terms"
+msgstr "付款條件"
+
+msgid "Memo"
+msgstr "備註"
+
+msgid "Addresses"
+msgstr "地址"
+
+msgid "Address Type"
+msgstr "地址類型"
+
+msgid "Billing"
+msgstr "帳單地址"
+
+msgid "Shipping"
+msgstr "送貨地址"
+
+msgid "Other"
+msgstr "其他"
+
+msgid "Address Line 1"
+msgstr "地址第一行"
+
+msgid "Address Line 2"
+msgstr "地址第二行"
+
+msgid "City"
+msgstr "城市"
+
+msgid "State"
+msgstr "州/省"
+
+msgid "Postal Code"
+msgstr "郵遞區號"
+
+msgid "Country"
+msgstr "國家"
+
+msgid "Default Address"
+msgstr "預設地址"
+
+msgid "Add Another Address"
+msgstr "新增其他地址"
+
+msgid "Save Customer"
+msgstr "儲存客戶"
+
+msgid "Customer Details"
+msgstr "客戶詳情"
+
+msgid "Edit"
+msgstr "編輯"
+
+msgid "Basic Information"
+msgstr "基本資料"
+
+msgid "Title"
+msgstr "職稱"
+
+msgid "Contact Information"
+msgstr "聯絡資訊"
+
+msgid "Default"
+msgstr "預設"
+
+msgid "System Information"
+msgstr "系統資訊"
+
+msgid "Created At"
+msgstr "建立時間"
+
+msgid "Last Modified"
+msgstr "最後修改"
+
+msgid "Modified By"
+msgstr "修改者"
+
+msgid "Status"
+msgstr "狀態"
+
+msgid "Active"
+msgstr "啟用"
+
+msgid "Inactive"
+msgstr "停用" 

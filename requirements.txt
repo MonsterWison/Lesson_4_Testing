@@ -1,0 +1,11 @@
+flask==3.0.2
+sqlmodel==0.0.14
+flask-login==0.6.3
+flask-sqlalchemy==3.1.1
+flask-babel==4.0.0
+python-dotenv==1.0.1
+bcrypt==4.1.2
+pytest==8.0.2
+pytest-cov==4.1.0
+black==24.2.0
+isort==5.13.2 

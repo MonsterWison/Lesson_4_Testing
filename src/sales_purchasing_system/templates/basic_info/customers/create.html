@@ -1,0 +1,184 @@
+{% extends "layout.html" %}
+
+{% block title %}{% trans %}Create New Customer{% endtrans %}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>{% trans %}Create New Customer{% endtrans %}</h2>
+        <a href="{{ url_for('basic_info.customer_list') }}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> {% trans %}Back to List{% endtrans %}
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" id="customerForm">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="customer_id" class="form-label">{% trans %}Customer ID{% endtrans %} *</label>
+                        <input type="text" class="form-control" id="customer_id" name="customer_id" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="short_name" class="form-label">{% trans %}Short Name{% endtrans %} *</label>
+                        <input type="text" class="form-control" id="short_name" name="short_name" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label for="long_name" class="form-label">{% trans %}Long Name{% endtrans %} *</label>
+                        <input type="text" class="form-control" id="long_name" name="long_name" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="contact_person" class="form-label">{% trans %}Contact Person{% endtrans %} *</label>
+                        <input type="text" class="form-control" id="contact_person" name="contact_person" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="contact_title" class="form-label">{% trans %}Contact Title{% endtrans %}</label>
+                        <input type="text" class="form-control" id="contact_title" name="contact_title">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="contact_department" class="form-label">{% trans %}Department{% endtrans %}</label>
+                        <input type="text" class="form-control" id="contact_department" name="contact_department">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="telephone" class="form-label">{% trans %}Telephone{% endtrans %} *</label>
+                        <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="fax" class="form-label">{% trans %}Fax{% endtrans %}</label>
+                        <input type="tel" class="form-control" id="fax" name="fax">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="email" class="form-label">{% trans %}Email{% endtrans %}</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="website" class="form-label">{% trans %}Website{% endtrans %}</label>
+                        <input type="url" class="form-control" id="website" name="website">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="payment_terms" class="form-label">{% trans %}Payment Terms{% endtrans %} *</label>
+                        <input type="text" class="form-control" id="payment_terms" name="payment_terms" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="memo" class="form-label">{% trans %}Memo{% endtrans %}</label>
+                    <textarea class="form-control" id="memo" name="memo" rows="3"></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <h4>{% trans %}Addresses{% endtrans %}</h4>
+                    <div id="addresses">
+                        <div class="card mb-3 address-card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="form-label">{% trans %}Address Type{% endtrans %} *</label>
+                                        <select class="form-select" name="addresses[0][address_type]" required>
+                                            <option value="Billing">{% trans %}Billing{% endtrans %}</option>
+                                            <option value="Shipping">{% trans %}Shipping{% endtrans %}</option>
+                                            <option value="Other">{% trans %}Other{% endtrans %}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <label class="form-label">{% trans %}Address Line 1{% endtrans %} *</label>
+                                        <input type="text" class="form-control" name="addresses[0][address_line1]" required>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <label class="form-label">{% trans %}Address Line 2{% endtrans %}</label>
+                                        <input type="text" class="form-control" name="addresses[0][address_line2]">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">{% trans %}City{% endtrans %} *</label>
+                                        <input type="text" class="form-control" name="addresses[0][city]" required>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-4">
+                                        <label class="form-label">{% trans %}State{% endtrans %}</label>
+                                        <input type="text" class="form-control" name="addresses[0][state]">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">{% trans %}Postal Code{% endtrans %} *</label>
+                                        <input type="text" class="form-control" name="addresses[0][postal_code]" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">{% trans %}Country{% endtrans %} *</label>
+                                        <input type="text" class="form-control" name="addresses[0][country]" required>
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addresses[0][is_default]">
+                                        <label class="form-check-label">{% trans %}Default Address{% endtrans %}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary" id="addAddress">
+                        <i class="bi bi-plus-lg"></i> {% trans %}Add Another Address{% endtrans %}
+                    </button>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-secondary me-2" onclick="window.history.back()">
+                        {% trans %}Cancel{% endtrans %}
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> {% trans %}Save Customer{% endtrans %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let addressCount = 1;
+    
+    document.getElementById('addAddress').addEventListener('click', function() {
+        const template = document.querySelector('.address-card').cloneNode(true);
+        const newAddress = template.cloneNode(true);
+        
+        // Update all input names with new index
+        const inputs = newAddress.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            const name = input.getAttribute('name');
+            if (name) {
+                input.setAttribute('name', name.replace(/\[\d+\]/, `[${addressCount}]`));
+            }
+        });
+        
+        // Clear input values
+        inputs.forEach(input => {
+            if (input.type !== 'checkbox') {
+                input.value = '';
+            } else {
+                input.checked = false;
+            }
+        });
+        
+        document.getElementById('addresses').appendChild(newAddress);
+        addressCount++;
+    });
+});
+</script>
+{% endblock %}
+{% endblock %} 

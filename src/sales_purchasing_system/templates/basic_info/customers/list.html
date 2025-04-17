@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block title %}{% trans %}Customer List{% endtrans %}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>{% trans %}Customer List{% endtrans %}</h2>
+        <a href="{{ url_for('basic_info.customer_create') }}" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i> {% trans %}New Customer{% endtrans %}
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="searchInput" placeholder="{% trans %}Search customers...{% endtrans %}">
+                        <button class="btn btn-outline-secondary" type="button" id="searchButton">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>{% trans %}Customer ID{% endtrans %}</th>
+                            <th>{% trans %}Short Name{% endtrans %}</th>
+                            <th>{% trans %}Contact Person{% endtrans %}</th>
+                            <th>{% trans %}Telephone{% endtrans %}</th>
+                            <th>{% trans %}Email{% endtrans %}</th>
+                            <th>{% trans %}Actions{% endtrans %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                        <tr>
+                            <td>{{ customer.customer_id }}</td>
+                            <td>{{ customer.short_name }}</td>
+                            <td>{{ customer.contact_person }}</td>
+                            <td>{{ customer.telephone }}</td>
+                            <td>{{ customer.email or '-' }}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="{{ url_for('basic_info.customer_detail', id=customer.id) }}" 
+                                       class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="{{ url_for('basic_info.customer_edit', id=customer.id) }}" 
+                                       class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <button type="button" 
+                                            class="btn btn-sm btn-outline-danger delete-customer"
+                                            data-id="{{ customer.id }}"
+                                            data-name="{{ customer.short_name }}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans %}Confirm Delete{% endtrans %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>{% trans %}Are you sure you want to delete customer{% endtrans %} <span id="customerName"></span>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans %}Cancel{% endtrans %}</button>
+                <form id="deleteForm" method="POST">
+                    <button type="submit" class="btn btn-danger">{% trans %}Delete{% endtrans %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const tableRows = document.querySelectorAll('tbody tr');
+    
+    function filterTable() {
+        const searchText = searchInput.value.toLowerCase();
+        tableRows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(searchText) ? '' : 'none';
+        });
+    }
+    
+    searchInput.addEventListener('input', filterTable);
+    searchButton.addEventListener('click', filterTable);
+    
+    // Delete confirmation
+    const deleteButtons = document.querySelectorAll('.delete-customer');
+    const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+    const deleteForm = document.getElementById('deleteForm');
+    const customerNameSpan = document.getElementById('customerName');
+    
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const customerId = this.dataset.id;
+            const customerName = this.dataset.name;
+            customerNameSpan.textContent = customerName;
+            deleteForm.action = `/customers/${customerId}/delete`;
+            deleteModal.show();
+        });
+    });
+});
+</script>
+{% endblock %}
+{% endblock %} 
